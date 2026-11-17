@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: sri-ant-consultas-api
+  config:
+    # Permite usar un archivo backend/.env (formato KEY=VALUE) al ejecutar desde /backend.
+    import: optional:file:.env[.properties]
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      # Upstash exige TLS. Para un Redis local sin TLS usar REDIS_SSL=false
+      ssl:
+        enabled: ${REDIS_SSL:true}
+      timeout: 2s
+      connect-timeout: 2s
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+app:
+  sri:
+    base-url: ${SRI_BASE_URL:https://srienlinea.sri.gob.ec}
+    timeout-ms: ${SRI_TIMEOUT_MS:8000}
+  ant:
+    base-url: ${ANT_BASE_URL:https://consultaweb.ant.gob.ec/PortalWEB/paginas/clientes/clp_grid_citaciones.jsp}
+    timeout-ms: ${ANT_TIMEOUT_MS:5000}
+    # Si es true, un dato guardado hace menos de fresh-ttl se sirve sin llamar a la ANT.
+    # Por defecto false: siempre se intenta primero la ANT en vivo (ver README).
+    serve-fresh-cache: ${ANT_SERVE_FRESH_CACHE:false}
+    fresh-ttl: ${ANT_FRESH_TTL:1h}
+    # 7 días = 604800 s. Justificación en LicenciaPuntosService y README.
+    backup-ttl: ${ANT_BACKUP_TTL:7d}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+
+logging:
+  level:
+    ec.consultas: INFO
