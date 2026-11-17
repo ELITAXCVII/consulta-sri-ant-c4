@@ -210,3 +210,21 @@ el servicio de licencias (ANT en vivo, fallback con respaldo, 503 sin respaldo, 
   truststore de Java; no se desactiva la verificación TLS.
 - El **correo electrónico** del paso 1 solo se valida y se muestra en el cliente; el backend no lo recibe ni lo almacena.
 - Las consultas a ANT/SRI se usan con fines informativos; respeta los términos de uso de cada institución.
+
+- ## Prueba de Usabilidad
+
+**Participante:** Estudiante universitario (22 años)  
+**Instrucción dada:** *"Usa esta aplicación web para verificar tu información tributaria, puntos de licencia y los datos de un vehículo, sin ayuda."*
+
+| # | Tarea definida | Éxito | Tiempo | Errores / Observaciones |
+| :--- | :--- | :---: | :---: | :--- |
+| **T1** | Ingresar correo electrónico y RUC de persona natural (`1710034065001`) para validar contribuyente. | Sí | 18 s | Ninguno; identificó rápido los campos iniciales. |
+| **T2** | Identificar los puntos de licencia y notar si el dato proviene de caché por caída de la ANT. | Sí | 12 s | Leyó el banner amarillo de advertencia y la fecha del respaldo. |
+| **T3** | Consultar los datos del vehículo ingresando la placa (`PCQ1234`). | Sí | 22 s | Dudó un segundo si la placa llevaba guion (`PCQ-1234`) o iba junta. |
+
+### Mejoras concretas propuestas
+1. **Normalización y ejemplo visual en el campo de placa:** Agregar un placeholder explícito (`Ej: PCQ1234`) y eliminar automáticamente espacios o guiones (`-`) en el frontend antes de enviar la petición al backend.
+2. **Autocompletado visual de la cédula desde el RUC:** Mostrar un texto de ayuda debajo del input de RUC indicando *"Se usarán los primeros 10 dígitos como cédula para consultar tus puntos en la ANT"* para dar mayor transparencia al usuario durante la carga.
+
+## Arquitectura C4 (IcePanel)
+* **Diagrama interactivo:** https://s.icepanel.io/6MqbMLeRr8LEny/Da3J *(requiere iniciar sesión con cuenta gratuita de IcePanel)*
