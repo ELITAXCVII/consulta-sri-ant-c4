@@ -227,4 +227,4 @@ el servicio de licencias (ANT en vivo, fallback con respaldo, 503 sin respaldo, 
 2. **Autocompletado visual de la cédula desde el RUC:** Mostrar un texto de ayuda debajo del input de RUC indicando *"Se usarán los primeros 10 dígitos como cédula para consultar tus puntos en la ANT"* para dar mayor transparencia al usuario durante la carga.
 
 ## Arquitectura C4 (IcePanel)
-* **Diagrama interactivo:** https://s.icepanel.io/6MqbMLeRr8LEny/Da3J *(requiere iniciar sesión con cuenta gratuita de IcePanel)*
+* **Diagrama interactivo:** https://s.icepanel.io/odLkYspcRD5AXi/Wh6v *(requiere iniciar sesión con cuenta gratuita de IcePanel)*
